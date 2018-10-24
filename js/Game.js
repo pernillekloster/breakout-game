@@ -20,7 +20,20 @@ class Game {
               col * this.BRICK_WIDTH,
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
-              this.BRICK_HEIGHT
+              this.BRICK_HEIGHT,
+              (this.color = "blue")
+            )
+          );
+        }
+        if (grid[row][col] === "B") {
+          this.bricks.push(
+            new Brick(
+              this.ctx,
+              col * this.BRICK_WIDTH,
+              row * this.BRICK_HEIGHT,
+              this.BRICK_WIDTH,
+              this.BRICK_HEIGHT,
+              (this.color = "red")
             )
           );
         }
@@ -104,7 +117,7 @@ class Game {
   update() {
     this.paddle.update();
     for (var iBall = 0; iBall < this.balls.length; iBall++) {
-      this.balls[iBall].update();
+      this.balls[iBall].update(this.paddle);
       this.checkBallPaddleCollisionAndUpdate(this.balls[iBall], this.paddle);
       for (var iBrick = this.bricks.length - 1; iBrick >= 0; iBrick--) {
         if (
