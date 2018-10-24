@@ -1,3 +1,5 @@
+let x = 1;
+
 class Game {
   constructor(ctx, grid) {
     this.BRICK_WIDTH = ctx.canvas.width / grid[0].length;
@@ -95,10 +97,10 @@ class Game {
           if (this.bricks.length === 0) {
             console.log("You win");
             this.stop();
-            // for(var next = this.bricks.length; next >)
             setTimeout(function() {
-              game = new Game(ctx, levels[next].grid);
+              game = new Game(ctx, levels[x].grid);
               game.start();
+              x++;
             }, 1000);
           }
         }
@@ -141,6 +143,25 @@ class Game {
     }
   }
 
+  nextLevel() {
+    console.log("You win");
+
+    if (this.bricks.length === 0) {
+      /*   console.log("You win");
+      this.stop();
+      setTimeout(function() {
+        game = new Game(ctx, levels[1].grid);
+        game.start();
+      }, 1000); */
+      /*   for (var nextLevel = 0; nextLevel > levels.length; nextLevel++) {
+        nextLevel++;
+        // for(var next = this.bricks.length; next >)
+        setTimeout(function() {
+          game = new Game(ctx, levels[nextLevel].grid);
+          game.start();
+        }, 1000); */
+    }
+  }
   // Return true if there is a collision
   checkBallBrickCollisionAndUpdate(ball, brick) {
     // Check with the bottom and top part of the  brick
@@ -164,12 +185,6 @@ class Game {
     }
     return false;
   }
-
-  /*   drawImage() {
-    var img = new Image();
-    img.src = "../images/gameover1.png";
-    ctx.drawImage(img, 100, 100);
-  } */
 
   removeUselessBalls() {
     for (var iBall = this.balls.length - 1; iBall >= 0; iBall--) {
