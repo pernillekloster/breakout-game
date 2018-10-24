@@ -18,6 +18,8 @@ class Ball {
   }
   launch() {
     if (this.isStatic()) {
+      this.angle = 5;
+
       this.speed = 10;
     }
   }

@@ -34,7 +34,6 @@ class Paddle {
     this.ctx.restore();
   }
   update() {
-    console.log(this.center().x);
     if (this.movement) {
       var delta = this.movement === "right" ? 1 : -1;
       this.x += delta * this.speed;

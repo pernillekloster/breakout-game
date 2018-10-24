@@ -1,8 +1,8 @@
 let x = 1;
-let livs = 3;
+// let livs = 3;
 
 class Game {
-  constructor(ctx, grid) {
+  constructor(ctx, grid, lives) {
     this.BRICK_WIDTH = ctx.canvas.width / grid[0].length;
     this.BRICK_HEIGHT = 50;
     this.BALL_RADIUS = this.BRICK_HEIGHT / 2;
@@ -10,6 +10,7 @@ class Game {
     this.ctx = ctx;
     this.bricks = [];
 
+    this.lives = 3;
     // Creation of bricks based on the grid
     for (var row = 0; row < grid.length; row++) {
       for (var col = 0; col < grid[row].length; col++) {
@@ -54,8 +55,6 @@ class Game {
       )
     ];
     console.log(this.balls);
-
-    this.lives = 3;
   }
   start() {
     var that = this;
@@ -109,9 +108,10 @@ class Game {
     }
     // Draw of lives
     this.ctx.save();
-    this.ctx.font = "30px sans-serif";
+    this.ctx.font = "70px sans-serif";
+    this.ctx.fillStyle = "brown";
     this.ctx.textAlign = "right";
-    this.ctx.fillText("Lives: " + this.lives, this.ctx.canvas.width - 5, 30);
+    this.ctx.fillText("Lives: " + this.lives, this.ctx.canvas.width - 10, 70);
     this.ctx.restore();
   }
   update() {
@@ -152,7 +152,9 @@ class Game {
       );
 
       this.lives--;
-    } else if (this.lives < 1) {
+      console.log("Lost one life");
+    }
+    if (this.lives < 1) {
       console.log("GAME OVER");
       this.stop();
     }
