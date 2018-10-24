@@ -1,4 +1,5 @@
 let x = 1;
+let livs = 3;
 
 class Game {
   constructor(ctx, grid) {
@@ -39,6 +40,7 @@ class Game {
         this.BALL_RADIUS
       )
     ];
+    console.log(this.balls);
 
     this.lives = 3;
   }
@@ -59,6 +61,25 @@ class Game {
   stop() {
     clearInterval(this.intervalId);
   }
+  /*   gameStateManager(function(){
+    switch(gameState){
+      case "loading":
+      break;
+  
+      case "play":
+      break;
+  
+      case "win":
+      pause();
+      message("Winner");
+      break;
+  
+      case "lose":
+      pause();
+      message("Game Over");
+      break;
+    }
+  }) */
   launchBalls() {
     for (var i = 0; i < this.balls.length; i++) {
       this.balls[i].launch();
@@ -95,7 +116,7 @@ class Game {
           console.log("DELETE", iBrick);
           this.bricks.splice(iBrick, 1);
           if (this.bricks.length === 0) {
-            console.log("You win");
+            console.log("Level complete");
             this.stop();
             setTimeout(function() {
               game = new Game(ctx, levels[x].grid);
@@ -116,15 +137,11 @@ class Game {
           this.BALL_RADIUS
         )
       );
+
       this.lives--;
     } else if (this.lives < 1) {
       console.log("GAME OVER");
       this.stop();
-      /* var img = new Image();
-      img.onload = function() {
-        ctx.drawImage(img, 0, 0);
-      };
-      img.src = "../images/gameover1.png"; */
     }
   }
 
@@ -143,25 +160,6 @@ class Game {
     }
   }
 
-  nextLevel() {
-    console.log("You win");
-
-    if (this.bricks.length === 0) {
-      /*   console.log("You win");
-      this.stop();
-      setTimeout(function() {
-        game = new Game(ctx, levels[1].grid);
-        game.start();
-      }, 1000); */
-      /*   for (var nextLevel = 0; nextLevel > levels.length; nextLevel++) {
-        nextLevel++;
-        // for(var next = this.bricks.length; next >)
-        setTimeout(function() {
-          game = new Game(ctx, levels[nextLevel].grid);
-          game.start();
-        }, 1000); */
-    }
-  }
   // Return true if there is a collision
   checkBallBrickCollisionAndUpdate(ball, brick) {
     // Check with the bottom and top part of the  brick

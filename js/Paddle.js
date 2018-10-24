@@ -34,10 +34,19 @@ class Paddle {
     this.ctx.restore();
   }
   update() {
+    var ball = new Ball(
+      this.ctx,
+      this.center().x,
+      this.y - this.BALL_RADIUS,
+      this.BALL_RADIUS
+    );
+    console.log(ball);
+    console.log(this.center().x);
     if (this.movement) {
       var delta = this.movement === "right" ? 1 : -1;
       this.x += delta * this.speed;
     }
+
     if (this.x <= 0) {
       this.x = 0;
     }
