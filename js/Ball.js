@@ -43,6 +43,7 @@ class Ball {
   }
   draw() {
     this.ctx.beginPath();
+    this.ctx.fillStyle = "#860f44";
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
     this.ctx.fill();
   }

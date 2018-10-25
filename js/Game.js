@@ -1,5 +1,6 @@
+// number of levels
 let x = 1;
-// let livs = 3;
+let lives = 3;
 
 class Game {
   constructor(ctx, grid) {
@@ -9,7 +10,7 @@ class Game {
 
     this.ctx = ctx;
     this.bricks = [];
-    this.lives = 3;
+    // this.lives = 3;
     // Creation of bricks based on the grid
     for (var row = 0; row < grid.length; row++) {
       for (var col = 0; col < grid[row].length; col++) {
@@ -21,7 +22,7 @@ class Game {
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
               this.BRICK_HEIGHT,
-              (this.color = "blue")
+              (this.color = "#C06D84")
             )
           );
         }
@@ -34,7 +35,7 @@ class Game {
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
               this.BRICK_HEIGHT,
-              (this.color = "red")
+              (this.color = "#F67280")
             )
 
             // ,
@@ -54,8 +55,7 @@ class Game {
     this.paddle = new Paddle(
       this.ctx,
       this.ctx.canvas.width / 5,
-      this.BRICK_HEIGHT,
-      (this.color = "#860f44")
+      this.BRICK_HEIGHT
     );
     this.balls = [
       new Ball(
@@ -120,18 +120,18 @@ class Game {
     }
     // Draw of lives
     this.ctx.save();
-    this.ctx.font = "70px sans-serif";
-    this.ctx.fillStyle = "brown";
+    this.ctx.font = "20px sans-serif";
+    this.ctx.fillStyle = "black";
     this.ctx.textAlign = "left";
-    this.ctx.fillText("Lives: " + this.lives, this.ctx.canvas.width - 1100, 70);
+    this.ctx.fillText("Lives: " + lives, this.ctx.canvas.width - 90, 80);
     this.ctx.restore();
 
     //Draw of level
     this.ctx.save();
-    this.ctx.font = "70px sans-serif";
-    this.ctx.fillStyle = "brown";
+    this.ctx.font = "20px sans-serif";
+    this.ctx.fillStyle = "black";
     this.ctx.textAlign = "right";
-    this.ctx.fillText("Level: " + this.level, this.ctx.canvas.width - 10, 70);
+    this.ctx.fillText("Level: " + x, this.ctx.canvas.width - 20, 35);
     // this.ctx.restore();
     // for (var row = 0; row < this.levels.grid.length; row++) {
     //   this.level++;
@@ -165,6 +165,7 @@ class Game {
           this.bricks.splice(iBrick, 1);
           if (this.bricks.length === 0) {
             console.log("Level complete");
+
             this.stop();
             setTimeout(function() {
               game = new Game(ctx, levels[x].grid);
@@ -187,11 +188,17 @@ class Game {
         )
       );
 
-      this.lives--;
+      lives--;
       console.log("Lost one life");
     }
-    if (this.lives < 1) {
-      console.log("GAME OVER");
+    if (lives < 1) {
+      var img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 300, 200, 600, 450);
+        this.img.center();
+      };
+      img.src = "../images/gameover1.png";
+
       this.stop();
     }
   }

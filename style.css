@@ -1,6 +1,23 @@
+button {
+  background-color: #6c5b7c;
+  justify-content: center;
+}
+
+#play {
+  color: white;
+}
+
 canvas {
-  border: 1px solid black;
+  border: 1px solid #dfd7e7;
   max-width: 100%;
   display: block;
-  background-image: url("../images/Background3.png");
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image: url("images/Background3.png");
+}
+
+body {
+  background-image: url("images/backgroundimage.png");
 }

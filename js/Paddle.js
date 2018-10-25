@@ -7,7 +7,6 @@ class Paddle {
     this.height = height;
     this.movement = null;
     this.speed = 15;
-    this.color = color;
     // this.cornerRadius = 50;
   }
   center() {
@@ -30,7 +29,7 @@ class Paddle {
   }
   draw() {
     this.ctx.save();
-    this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "#860f44";
     // this.ctx.strokeRect(this.x, this.y,this.width,this.height)
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.ctx.restore();
