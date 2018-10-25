@@ -1,5 +1,5 @@
 class Brick {
-  constructor(ctx, x, y, width, height, color) {
+  constructor(ctx, x, y, width, height, color, letter) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -7,6 +7,7 @@ class Brick {
     this.height = height;
     // this.resistance = 1;
     this.color = color;
+    this.letter = letter;
   }
   top() {
     return this.y;

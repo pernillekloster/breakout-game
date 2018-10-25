@@ -20,7 +20,7 @@ class Ball {
     if (this.isStatic()) {
       this.angle = 7;
 
-      this.speed = 10;
+      this.speed = 10 * x;
     }
   }
   top() {

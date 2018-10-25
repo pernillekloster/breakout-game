@@ -24,7 +24,8 @@ class Game {
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
               this.BRICK_HEIGHT,
-              (this.color = "#F7B595")
+              (this.color = "#F7B595"),
+              (this.letter = "Y")
             )
           );
         }
@@ -36,12 +37,12 @@ class Game {
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
               this.BRICK_HEIGHT,
-              (this.color = "#C06D84")
+              (this.color = "black"),
+              (this.letter = "X")
             )
           );
         }
         if (grid[row][col] === "B") {
-          console.log("RED BRICK");
           this.bricks.push(
             new Brick(
               this.ctx,
@@ -49,19 +50,10 @@ class Game {
               row * this.BRICK_HEIGHT,
               this.BRICK_WIDTH,
               this.BRICK_HEIGHT,
-              (this.color = "#F67280")
+              (this.color = "#F67280"),
+              (this.letter = "B")
             )
           );
-
-          // ,
-          // this.balls.push(
-          //   new Ball(
-          //     this.ctx,
-          //     this.paddle.center().x,
-          //     this.paddle.y - this.BALL_RADIUS,
-          //     this.BALL_RADIUS
-          //   )
-          // )
         }
       }
     }
@@ -80,6 +72,8 @@ class Game {
       )
     ];
     console.log(this.balls);
+    console.log(this.bricks);
+
     this.level = 1;
   }
   start() {
@@ -241,6 +235,17 @@ class Game {
       ball.x < brick.right()
     ) {
       ball.bounceHorizontally();
+
+      if (brick.letter === "X") {
+        this.balls.push(
+          new Ball(
+            this.ctx,
+            this.paddle.center().x,
+            this.paddle.y - this.BALL_RADIUS,
+            this.BALL_RADIUS
+          )
+        );
+      }
       return true;
     }
     if (
@@ -250,8 +255,19 @@ class Game {
       ball.y < brick.bottom()
     ) {
       ball.bounceVertically();
+      if (brick.letter === "X") {
+        this.balls.push(
+          new Ball(
+            this.ctx,
+            this.paddle.center().x,
+            this.paddle.y - this.BALL_RADIUS,
+            this.BALL_RADIUS
+          )
+        );
+      }
       return true;
     }
+
     return false;
   }
 
