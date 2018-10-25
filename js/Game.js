@@ -16,6 +16,18 @@ class Game {
     // Creation of bricks based on the grid
     for (var row = 0; row < grid.length; row++) {
       for (var col = 0; col < grid[row].length; col++) {
+        if (grid[row][col] === "Y") {
+          this.bricks.push(
+            new Brick(
+              this.ctx,
+              col * this.BRICK_WIDTH,
+              row * this.BRICK_HEIGHT,
+              this.BRICK_WIDTH,
+              this.BRICK_HEIGHT,
+              (this.color = "#F7B595")
+            )
+          );
+        }
         if (grid[row][col] === "X") {
           this.bricks.push(
             new Brick(
@@ -39,17 +51,17 @@ class Game {
               this.BRICK_HEIGHT,
               (this.color = "#F67280")
             )
-
-            // ,
-            // this.balls.push(
-            //   new Ball(
-            //     this.ctx,
-            //     this.paddle.center().x,
-            //     this.paddle.y - this.BALL_RADIUS,
-            //     this.BALL_RADIUS
-            //   )
-            // )
           );
+
+          // ,
+          // this.balls.push(
+          //   new Ball(
+          //     this.ctx,
+          //     this.paddle.center().x,
+          //     this.paddle.y - this.BALL_RADIUS,
+          //     this.BALL_RADIUS
+          //   )
+          // )
         }
       }
     }
@@ -194,13 +206,12 @@ class Game {
       console.log("Lost one life");
     }
     if (lives < 1) {
+      console.log("GAME OVER ");
       var img = new Image();
       img.onload = function() {
         ctx.drawImage(img, 150, 200, 900, 400);
-        this.img.center();
       };
       img.src = "../images/gameover1.png";
-
       this.stop();
     }
   }

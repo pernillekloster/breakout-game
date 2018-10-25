@@ -18,6 +18,10 @@ $("#play").click(function() {
   if (game) {
     game.stop();
   }
+  if (lives === 0) {
+    return (lives = 3);
+  }
+
   game = new Game(ctx, levels[0].grid);
   game.start();
 });
