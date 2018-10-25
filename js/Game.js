@@ -1,3 +1,5 @@
+// var myGif = GIF();
+// myGif.load("..images/gameover.gif");
 // number of levels
 let x = 1;
 let lives = 3;
@@ -194,7 +196,7 @@ class Game {
     if (lives < 1) {
       var img = new Image();
       img.onload = function() {
-        ctx.drawImage(img, 300, 200, 600, 450);
+        ctx.drawImage(img, 150, 200, 900, 400);
         this.img.center();
       };
       img.src = "../images/gameover1.png";
