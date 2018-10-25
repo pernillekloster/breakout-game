@@ -1,5 +1,5 @@
 class Paddle {
-  constructor(ctx, width, height) {
+  constructor(ctx, width, height, color) {
     this.ctx = ctx;
     this.x = (this.ctx.canvas.width - width) / 2;
     this.y = this.ctx.canvas.height - height;
@@ -7,6 +7,8 @@ class Paddle {
     this.height = height;
     this.movement = null;
     this.speed = 15;
+    this.color = color;
+    // this.cornerRadius = 50;
   }
   center() {
     return {
@@ -33,6 +35,7 @@ class Paddle {
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.ctx.restore();
   }
+
   update() {
     if (this.movement) {
       var delta = this.movement === "right" ? 1 : -1;

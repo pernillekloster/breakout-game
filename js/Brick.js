@@ -20,18 +20,26 @@ class Brick {
   right() {
     return this.x + this.width;
   }
-  /* 
-  brick2() {
-    ctx.save();
-    ctx.fillStyle = "blue";
-    this.ctx.strokeRect(this.x, this.y, this.width, this.height);
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.restore();
-  } */
-  /*  resistance(){
-    var resistance = 1; 
-    (
-  } */
+
+  // destroy(game) {
+  //   if (this.power === "B") {
+  //   }
+  // }
+  // brick2(){
+
+  // }
+
+  // brick2() {
+  //   ctx.save();
+  //   ctx.fillStyle = "blue";
+  //   this.ctx.strokeRect(this.x, this.y, this.width, this.height);
+  //   this.ctx.fillRect(this.x, this.y, this.width, this.height);
+  //   ctx.restore();
+  // }
+  //  resistance(){
+  //   var resistance = 1;
+  //   (
+  // }
 
   draw() {
     ctx.save();

@@ -1,5 +1,6 @@
-canvas{
+canvas {
   border: 1px solid black;
   max-width: 100%;
   display: block;
+  background-image: url("../images/Background3.png");
 }

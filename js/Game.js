@@ -2,14 +2,13 @@ let x = 1;
 // let livs = 3;
 
 class Game {
-  constructor(ctx, grid, lives) {
+  constructor(ctx, grid) {
     this.BRICK_WIDTH = ctx.canvas.width / grid[0].length;
     this.BRICK_HEIGHT = 50;
     this.BALL_RADIUS = this.BRICK_HEIGHT / 2;
 
     this.ctx = ctx;
     this.bricks = [];
-
     this.lives = 3;
     // Creation of bricks based on the grid
     for (var row = 0; row < grid.length; row++) {
@@ -27,6 +26,7 @@ class Game {
           );
         }
         if (grid[row][col] === "B") {
+          console.log("RED BRICK");
           this.bricks.push(
             new Brick(
               this.ctx,
@@ -36,6 +36,16 @@ class Game {
               this.BRICK_HEIGHT,
               (this.color = "red")
             )
+
+            // ,
+            // this.balls.push(
+            //   new Ball(
+            //     this.ctx,
+            //     this.paddle.center().x,
+            //     this.paddle.y - this.BALL_RADIUS,
+            //     this.BALL_RADIUS
+            //   )
+            // )
           );
         }
       }
@@ -44,7 +54,8 @@ class Game {
     this.paddle = new Paddle(
       this.ctx,
       this.ctx.canvas.width / 5,
-      this.BRICK_HEIGHT
+      this.BRICK_HEIGHT,
+      (this.color = "#860f44")
     );
     this.balls = [
       new Ball(
@@ -55,6 +66,7 @@ class Game {
       )
     ];
     console.log(this.balls);
+    this.level = 1;
   }
   start() {
     var that = this;
@@ -110,9 +122,22 @@ class Game {
     this.ctx.save();
     this.ctx.font = "70px sans-serif";
     this.ctx.fillStyle = "brown";
-    this.ctx.textAlign = "right";
-    this.ctx.fillText("Lives: " + this.lives, this.ctx.canvas.width - 10, 70);
+    this.ctx.textAlign = "left";
+    this.ctx.fillText("Lives: " + this.lives, this.ctx.canvas.width - 1100, 70);
     this.ctx.restore();
+
+    //Draw of level
+    this.ctx.save();
+    this.ctx.font = "70px sans-serif";
+    this.ctx.fillStyle = "brown";
+    this.ctx.textAlign = "right";
+    this.ctx.fillText("Level: " + this.level, this.ctx.canvas.width - 10, 70);
+    // this.ctx.restore();
+    // for (var row = 0; row < this.levels.grid.length; row++) {
+    //   this.level++;
+    // }
+
+    // Make sure the image is loaded first otherwise nothing will draw.
   }
   update() {
     this.paddle.update();
@@ -127,6 +152,16 @@ class Game {
           )
         ) {
           console.log("DELETE", iBrick);
+
+          // this adds a new ball on each brick
+          // this.balls.push(
+          //   new Ball(
+          //     this.ctx,
+          //     this.paddle.center().x,
+          //     this.paddle.y - this.BALL_RADIUS,
+          //     this.BALL_RADIUS
+          //   )
+          // );
           this.bricks.splice(iBrick, 1);
           if (this.bricks.length === 0) {
             console.log("Level complete");
@@ -135,11 +170,12 @@ class Game {
               game = new Game(ctx, levels[x].grid);
               game.start();
               x++;
-            }, 1000);
+            }, 1000 / 60);
           }
         }
       }
     }
+
     this.removeUselessBalls();
     if (this.balls.length === 0) {
       this.balls.push(
@@ -198,6 +234,23 @@ class Game {
     }
     return false;
   }
+
+  // newBallFromBrick() {
+  //   for (var row = 0; row < grid.length; row++) {
+  //     for (var col = 0; col < grid[row].length; col++)
+  //       if (grid[row][col] === "B") {
+  //         console.log("RED BRICK");
+  //         this.balls.push(
+  //           new Ball(
+  //             this.ctx,
+  //             this.paddle.center().x,
+  //             this.paddle.y - this.BALL_RADIUS,
+  //             this.BALL_RADIUS
+  //           )
+  //         );
+  //       }
+  //   }
+  // }
 
   removeUselessBalls() {
     for (var iBall = this.balls.length - 1; iBall >= 0; iBall--) {
