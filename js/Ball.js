@@ -19,8 +19,10 @@ class Ball {
   launch() {
     if (this.isStatic()) {
       this.angle = 7;
-
-      this.speed = 10 * x;
+      this.speed = 10 * (x * 0.4);
+      if (this.speed > 28) {
+        this.speed = 24 + 1;
+      }
     }
   }
   top() {

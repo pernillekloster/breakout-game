@@ -19,12 +19,21 @@ $("#play").click(function() {
     game.stop();
   }
   if (lives === 0) {
+    // game.start();
+    window.location.href = "../index.html";
+
     return (lives = 3);
   }
 
   game = new Game(ctx, levels[0].grid);
   game.start();
 });
+
+// $("#rules").click(function() {
+//   var img = new Image();
+//   ctx.drawImage(img, 150, 200, 900, 400);
+//   img.src = "../images/gameover5.png";
+// });
 
 $(document).keydown(function(event) {
   console.log("keydown", event.keyCode);
@@ -51,9 +60,3 @@ $(document).keyup(function(event) {
       break;
   }
 });
-
-/*  if (this.x < ctx.canvas.width - 10) {
-      x++;
-    } else if (y < ctx.canvas.height - 10) {
-      y++;
-    } */

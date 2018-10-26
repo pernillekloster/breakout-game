@@ -1,9 +1,13 @@
 button {
   background-color: #6c5b7c;
-  justify-content: center;
+  width: 1200px;
 }
 
 #play {
+  color: white;
+}
+
+#rules {
   color: white;
 }
 

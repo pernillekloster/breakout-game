@@ -161,15 +161,6 @@ class Game {
         ) {
           console.log("DELETE", iBrick);
 
-          // this adds a new ball on each brick
-          // this.balls.push(
-          //   new Ball(
-          //     this.ctx,
-          //     this.paddle.center().x,
-          //     this.paddle.y - this.BALL_RADIUS,
-          //     this.BALL_RADIUS
-          //   )
-          // );
           this.bricks.splice(iBrick, 1);
           if (this.bricks.length === 0) {
             console.log("Level complete");
@@ -203,9 +194,9 @@ class Game {
       console.log("GAME OVER ");
       var img = new Image();
       img.onload = function() {
-        ctx.drawImage(img, 150, 200, 900, 400);
+        ctx.drawImage(img, 0, 0, 1200, 800);
       };
-      img.src = "../images/gameover1.png";
+      img.src = "../images/gameover8.png";
       this.stop();
     }
   }
