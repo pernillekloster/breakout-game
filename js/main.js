@@ -29,12 +29,6 @@ $("#play").click(function() {
   game.start();
 });
 
-// $("#rules").click(function() {
-//   var img = new Image();
-//   ctx.drawImage(img, 150, 200, 900, 400);
-//   img.src = "../images/gameover5.png";
-// });
-
 $(document).keydown(function(event) {
   console.log("keydown", event.keyCode);
   switch (event.keyCode) {
@@ -45,8 +39,10 @@ $(document).keydown(function(event) {
       game.paddle.movement = "right";
       break;
     case 32: // space
-      event.preventDefault();
-      game.launchBalls();
+      setInterval(function() {
+        event.preventDefault();
+        game.launchBalls();
+      }, 100);
       break;
   }
 });
