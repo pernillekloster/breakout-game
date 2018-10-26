@@ -29,7 +29,7 @@ class Paddle {
   }
   draw() {
     this.ctx.save();
-    this.ctx.fillStyle = "#860f44";
+    this.ctx.fillStyle = "#5B7C72";
     // this.ctx.strokeRect(this.x, this.y,this.width,this.height)
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.ctx.restore();

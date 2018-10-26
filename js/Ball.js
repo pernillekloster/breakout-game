@@ -19,10 +19,15 @@ class Ball {
   launch() {
     if (this.isStatic()) {
       this.angle = 7;
-      this.speed = 10 * (x * 0.4);
-      if (this.speed > 28) {
-        this.speed = 24 + 1;
+      this.speed = 20 * (x * 0.2);
+
+      if (this.speed < 17) {
+        this.speed = 20 * (x * 0.4);
       }
+      if (this.speed > 28) {
+        this.speed = 24 + 0.5;
+      }
+      console.log("SPEED: ", this.speed);
     }
   }
   top() {
@@ -45,7 +50,7 @@ class Ball {
   }
   draw() {
     this.ctx.beginPath();
-    this.ctx.fillStyle = "#860f44";
+    this.ctx.fillStyle = "#5B7C72";
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
     this.ctx.fill();
   }
